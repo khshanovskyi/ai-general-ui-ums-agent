@@ -56,7 +56,7 @@ async def lifespan(app: FastAPI):
     #       - port=int(os.getenv("REDIS_PORT", 6379))
     #       - decode_responses=True
     # 9. ping to redis to check if its alive (ping method in redis client)
-    # 10. Create ConversationManager with DIAL clien and Redis client and assign to `conversation_manager` (global variable)
+    # 10. Create ConversationManager with OpenAI clien and Redis client and assign to `conversation_manager` (global variable)
     yield
 
 

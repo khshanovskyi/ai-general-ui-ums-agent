@@ -49,7 +49,7 @@ In this task you will need to implement an Agent with classical Tool use patten 
 ├── 📂 agent/
 │   │
 │   ├── 📂 clients/
-│   │   ├── dial_client.py         ⚠️ TODO: implement logic
+│   │   ├── openai_client.py         ⚠️ TODO: implement logic
 │   │   ├── http_mcp_client.py     ⚠️ TODO: implement logic
 │   │   └── stdio_mcp_client.py    ⚠️ TODO: implement logic
 │   ├── 📂 models/
