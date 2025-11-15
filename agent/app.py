@@ -67,7 +67,7 @@ async def lifespan(app: FastAPI):
         tool_name_client_map[tool_name] = duckduckgo_mcp_client
         logger.info("Registered DuckDuckGo tool", extra={"tool_name": tool_name})
 
-    dial_client = OpenAIClient(
+    openai_client = OpenAIClient(
         api_key=os.getenv("OPENAI_API_KEY"),
         model="gpt-4o",
         tools=tools,
@@ -93,7 +93,7 @@ async def lifespan(app: FastAPI):
     logger.info("Redis connection established successfully")
 
     # Initialize ConversationManager with both dependencies
-    conversation_manager = ConversationManager(dial_client, redis_client)
+    conversation_manager = ConversationManager(openai_client, redis_client)
     logger.info("ConversationManager initialized successfully")
     logger.info("Application startup completed")
 

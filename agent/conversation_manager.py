@@ -20,8 +20,8 @@ CONVERSATION_LIST_KEY = "conversations:list"
 class ConversationManager:
     """Manages conversation lifecycle including AI interactions and persistence"""
 
-    def __init__(self, dial_client: OpenAIClient, redis_client: redis.Redis):
-        self.dial_client = dial_client
+    def __init__(self, openai_client: OpenAIClient, redis_client: redis.Redis):
+        self.openai_client = openai_client
         self.redis = redis_client
         logger.info("ConversationManager initialized")
 
@@ -178,8 +178,8 @@ class ConversationManager:
         # Send conversation_id first
         yield f"data: {json.dumps({'conversation_id': conversation_id})}\n\n"
 
-        # Stream the response - full_messages will be modified by dial_client
-        async for chunk in self.dial_client.stream_response(messages):
+        # Stream the response - full_messages will be modified by openai_client
+        async for chunk in self.openai_client.stream_response(messages):
             yield chunk
 
         await self._save_conversation_messages(conversation_id, messages)
@@ -197,7 +197,7 @@ class ConversationManager:
         """Handle non-streaming chat"""
         logger.debug("Starting non-streaming chat", extra={"conversation_id": conversation_id})
 
-        ai_message = await self.dial_client.response(messages)
+        ai_message = await self.openai_client.response(messages)
 
         await self._save_conversation_messages(conversation_id, messages)
 

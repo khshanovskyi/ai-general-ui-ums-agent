@@ -62,28 +62,29 @@ class StdioMCPClient:
         logger.debug("Fetching tools from MCP server", extra={"docker_image": self.docker_image})
         tools_result = await self.session.list_tools()
 
-        dial_tools = []
+        tools = []
         for tool in tools_result.tools:
-            dial_tool = {
-                "type": "function",
-                "function": {
-                    "name": tool.name,
-                    "description": tool.description,
-                    "parameters": tool.inputSchema
+            tools.append(
+                {
+                    "type": "function",
+                    "function": {
+                        "name": tool.name,
+                        "description": tool.description,
+                        "parameters": tool.inputSchema
+                    }
                 }
-            }
-            dial_tools.append(dial_tool)
+            )
 
         logger.info(
             "Retrieved tools from MCP server",
             extra={
                 "docker_image": self.docker_image,
-                "tool_count": len(dial_tools),
-                "tool_names": [tool["function"]["name"] for tool in dial_tools]
+                "tool_count": len(tools),
+                "tool_names": [tool["function"]["name"] for tool in tools]
             }
         )
 
-        return dial_tools
+        return tools
 
     async def call_tool(self, tool_name: str, tool_args: dict[str, Any]) -> Any:
         """Call a specific tool on the MCP server"""
