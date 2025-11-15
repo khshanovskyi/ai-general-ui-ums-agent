@@ -16,8 +16,6 @@ In this task you will need to implement an Agent with classical Tool use patten 
 
 - **Python**: 3.11 or higher
 - **Dependencies**: Listed in `requirements.txt`
-- **API Access**: DIAL API key with appropriate permissions
-- **Network**: EPAM VPN connection for internal API access
 - Docker and Docker Compose
 
 ## Task
@@ -50,7 +48,7 @@ In this task you will need to implement an Agent with classical Tool use patten 
 ├── 📂 agent/
 │   │
 │   ├── 📂 clients/
-│   │   ├── dial_client.py         ⚠️ TODO: implement logic
+│   │   ├── openai_client.py         ⚠️ TODO: implement logic
 │   │   ├── http_mcp_client.py     ⚠️ TODO: implement logic
 │   │   └── stdio_mcp_client.py    ⚠️ TODO: implement logic
 │   ├── 📂 models/

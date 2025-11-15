@@ -46,8 +46,8 @@ class StdioMCPClient:
         #TODO:
         # 1. Check if session is present, if not then raise an error with message that MCP client is not connected to MCP server
         # 2. Through the session get list tools (it is async method, await it)
-        # 3. Retrieved tools are returned according MCP (Anthropic) spec. You need to covert it to the DIAL (OpenAI compatible)
-        #    tool format https://dialx.ai/dial_api#operation/sendChatCompletionRequest (see tools param)
+        # 3. Retrieved tools are returned according MCP (Anthropic) spec. You need to covert it to the OpenAI
+        #    tool format https://platform.openai.com/docs/guides/function-calling#defining-functions
         # 4. Log retrieved tools
         # 5. Return tools dicts list
         raise NotImplementedError()

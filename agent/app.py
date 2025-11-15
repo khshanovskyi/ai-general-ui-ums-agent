@@ -49,7 +49,7 @@ async def lifespan(app: FastAPI):
     # 7. Initialize OpenAIClient with. Models: gpt-4o or claude-3-7-sonnet@20250219, endpoint is https://ai-proxy.lab.epam.com
     # 8. Create Redis client (redis.Redis). Host is localhost, port is 6379, and decode response
     # 9. ping to redis to check if `its alive (ping method in redis client)
-    # 10. Create ConversationManager with DIAL clien and Redis client and assign to `conversation_manager` (global variable)
+    # 10. Create ConversationManager with OpenAI clien and Redis client and assign to `conversation_manager` (global variable)
     yield
 
 
